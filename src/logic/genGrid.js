@@ -1,16 +1,21 @@
 import Tiles from '../assets';
 
-const genGrid = (gridHeight, gridWidth) => {
+const genGrid = (gridx, gridy, rovers) => {
   let tmpGrid = [];
-  for (let j = 0; j < gridHeight; j++) {
-    tmpGrid[j] = new Array(gridWidth);
-  }
-
-  for (let x = 0; x < gridWidth; x++) {
-    for (let y = 0; y < gridHeight; y++) {
-      tmpGrid[x][y] = { url: Tiles.center };
+  for (let y = 0; y < gridy; y++) {
+    tmpGrid[y] = [];
+    for (let x = 0; x < gridx; x++) {
+      tmpGrid[y][x] = { url: Tiles.center };
+      if (rovers.length > 0) {
+        console.log('rovers', rovers);
+        const roverAtPosition = rovers.find((r) => r.x === x && r.y === y);
+        if (roverAtPosition) {
+          tmpGrid[y][x].rover = { ...roverAtPosition };
+        }
+      }
     }
   }
+  console.log(111, tmpGrid);
   return tmpGrid;
 };
 

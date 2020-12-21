@@ -1,62 +1,64 @@
 <script>
-  import { xlink_attr } from 'svelte/internal';
+  import COMMAND_PHASES from '../logic/commandPhases';
+  let commands = '';
+  let currentPhase = COMMAND_PHASES[0];
 
-  import { gridDimensions } from '../logic/stores';
-  // what step we are on
-  let commandPhase = 0;
-  const COMMAND_PHASES = [
-    {
-      qualifier: 'PLATEAU:',
-      regexTest: /^\d+(?:\s+\d+){1}$/,
-      text: 'The size of the PLATEAU as X Y ',
-      commitFn: (e) => {
-        console.log('hi');
-      },
-    },
-    {
-      qualifier: 'LANDING:',
-      regexTest: /([+\-]{0,1}[\d]+(?:\.[\\d]+)*)/,
-      text: 'Where the rover will land as X Y Direction',
-    },
-  ];
-  let commands = 'PLATEAU: ';
-  let currentPhase = COMMAND_PHASES[commandPhase];
+  const findMatchedPhase = (coms) => {
+    return COMMAND_PHASES.filter((e) => coms?.includes(e.qualifier)) || [];
+  };
+
+  const handleInput = (e) => {
+    const [matchedPhase] = findMatchedPhase(commands.toUpperCase());
+    if (matchedPhase) {
+      // set current phase
+      currentPhase = matchedPhase;
+    } else {
+      currentPhase = COMMAND_PHASES[0];
+    }
+  };
+
+  const handleSubmit = (e) => {
+    // if we have a matching qualifier, set our command phase to that (we only care about the last one)
+    // only full matches are considered
+    const upperCaseCommads = commands.toUpperCase();
+    const [matchedPhase] = findMatchedPhase(upperCaseCommads);
+    if (matchedPhase) {
+      const coords = upperCaseCommads
+        .replace(matchedPhase.qualifier, '')
+        .trim();
+      console.log(111, coords);
+      if (coords.match(matchedPhase.regexTest)) {
+        matchedPhase.commitFn(coords.split(/[ ,]+/));
+      }
+    }
+    // reset state once done
+    commands = '';
+    currentPhase = COMMAND_PHASES[0];
+  };
 </script>
 
-<div
-  class="py-8 px-8 max-w-sm mx-auto bg-gray-800 rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 text-white fond-bold font-inter"
->
-  <div class="flex flex-col w-full">
-    <p class="flex py-3 self-center">{currentPhase.text}</p>
+<form on:submit|preventDefault="{handleSubmit}">
+  <div class="flex flex-row">
+    <div
+      class="py-8 px-8 ml-4 bg-gray-800 rounded-xl shadow-md space-y-2 sm:py-4 sm:space-y-0 sm:space-x-6 text-white fond-bold font-inter"
+    >
+      <div class="flex flex-col w-full">
+        <p class="flex py-3 self-center">{currentPhase.text}</p>
 
-    <div class="flex flex-row">
-      <p class="font-bold pr-2">&gt;</p>
-      <input
-        bind:value="{commands}"
-        on:input="{() => {
-          commands = commands.toUpperCase();
-          // if we have a matching qualifier, set our command phase to that (we only care about the last one)
-          // only full matches are considered
-          const [matchedPhase] = COMMAND_PHASES.filter((e) =>
-            commands.includes(e.qualifier)
-          );
-          if (matchedPhase) {
-            const coords = commands.replace(matchedPhase.qualifier, '').trim();
-            if (coords.match(matchedPhase.regexTest)) {
-              matchedPhase.commitFn();
-            }
-            // if () {
-
-            // }
-            //if (commands.includes )
-            // if (commands.includes(currentPhase.qualifier)) {
-            //   // run the current phases regex test (if any)
-
-            // }
-          }
-        }}"
-        class="flex font-bold bg-gray-800 text-white w-full"
-      />
+        <div class="flex flex-row">
+          <p class="font-bold pr-2">&gt;</p>
+          <input
+            on:input="{handleInput}"
+            bind:value="{commands}"
+            class="flex font-bold bg-gray-800 text-white w-full"
+          />
+        </div>
+      </div>
     </div>
+    <button
+      class="bg-red-500 ml-3 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+    >
+      Send
+    </button>
   </div>
-</div>
+</form>

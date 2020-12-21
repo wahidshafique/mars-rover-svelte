@@ -6,7 +6,7 @@
 <div>
   <div class="font-inter">
     <div class="text-center">
-      <h1 class="text-5xl">Mars Rover Controls</h1>
+      <h1 class="text-4xl">Mars Rover Controls</h1>
     </div>
   </div>
   <GridCommand />

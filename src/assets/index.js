@@ -7,6 +7,7 @@ import right from './mapTile_r.png';
 import topCenter from './mapTile_tc.png';
 import topRight from './mapTile_tr.png';
 import topLeft from './mapTile_tl.png';
+import rover from './rover.png';
 
 export default {
   bottomCenter,
@@ -18,4 +19,5 @@ export default {
   topCenter,
   topLeft,
   topRight,
+  rover,
 };
