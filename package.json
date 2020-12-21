@@ -1,9 +1,8 @@
 {
-  "name": "svelte-parcel-talwind-starter",
+  "name": "mars-rover",
   "version": "1.0.0",
-  "description": "Svelte with Tailwind and Parcel",
+  "description": "Rover game built in svelte",
   "main": "./src/main.js",
-  "author": "codechips",
   "license": "MIT",
   "private": false,
   "scripts": {

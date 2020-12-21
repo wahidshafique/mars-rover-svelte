@@ -1,3 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const count = writable(0);
+export const grid = writable([[], []]);
+export const gridDimensions = writable({
+  width: 10,
+  height: 10,
+});
