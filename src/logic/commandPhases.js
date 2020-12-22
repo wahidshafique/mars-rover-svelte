@@ -25,6 +25,10 @@ const COMMAND_PHASES = [
     regexTest: /^\w+(?:\s+\d+){2}\s[nesw]$/,
     text: 'Where the rover will land as: X Y Direction(nesw)',
     commitFn: ([name, x, y, dir]) => {
+      const { width, height } = get(gridDimensions);
+      if (x > width - 1 || x < 0 || y < 0 || y > height - 1) {
+        throw new Error(`Please enter values below: ${width} ${height} `);
+      }
       // update global rovers object with an object holding the rovers position
       rovers.update((r) => [
         ...r,

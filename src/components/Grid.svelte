@@ -18,6 +18,8 @@
               <Rover
                 title="{Item.rover.name}"
                 orientation="{Item.rover.orientation}"
+                row="{row}"
+                col="{col}"
               />
             {/if}
           </div>

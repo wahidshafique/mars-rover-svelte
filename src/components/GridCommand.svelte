@@ -12,7 +12,9 @@
   let currentPhase = COMMAND_PHASES[0];
 
   const findMatchedPhase = (coms) => {
-    return COMMAND_PHASES.filter((e) => coms?.includes(e.qualifier)) || [];
+    return (
+      COMMAND_PHASES.filter((e) => coms && coms.includes(e.qualifier)) || []
+    );
   };
 
   const handleInput = (e) => {
@@ -36,7 +38,6 @@
       const coords = upperCaseCommads
         .replace(matchedPhase.qualifier, '')
         .trim();
-      console.log('matched coords', coords);
       if (coords.match(matchedPhase.regexTest)) {
         try {
           matchedPhase.commitFn(coords.split(/[ ,]+/));
@@ -69,6 +70,7 @@
         <div class="flex flex-row">
           <p class="font-bold pr-2">&gt;</p>
           <input
+            aria-label="enter a command"
             bind:this="{inputRef}"
             on:input="{handleInput}"
             bind:value="{commands}"

@@ -2,7 +2,7 @@ import { render } from '@testing-library/svelte';
 import { gridDimensions } from '../src/logic/stores';
 import Grid from '../src/components/Grid.svelte';
 
-const gridGen = (dims) => {
+export const gridGen = (dims) => {
   gridDimensions.update(() => dims);
   const { getByAltText } = render(Grid);
   // verify each grid cell has the correct position ala its alt-text
@@ -13,7 +13,7 @@ const gridGen = (dims) => {
   }
 };
 
-describe('App', () => {
+describe('Grid', () => {
   test('must match snapshot', () => {
     const { container } = render(Grid);
 
