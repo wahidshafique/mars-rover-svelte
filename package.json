@@ -5,6 +5,7 @@
   "main": "./src/main.js",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "scripts": {
     "start": "parcel src/index.html --port 3000",
     "test": "jest",
