@@ -5,20 +5,17 @@
   import genGrid from '../logic/genGrid';
 
   $: grid = genGrid($gridDimensions.x, $gridDimensions.y, $rovers);
-  $: {
-    console.log('GRID', grid);
-  }
 </script>
 
 <div class="p-4 grid-wrapper">
-  {#each grid as RowItem, row}
+  {#each grid as _, col}
     <div class="clear-both">
-      {#each grid[row] as ColItem, col}
+      {#each grid[col] as Item, row}
         <div class="float-left whitespace-no-wrap">
           <div class="relative">
-            <img src="{ColItem.url}" alt="tile" />
-            {#if ColItem.rover}
-              <Rover title="{ColItem.rover.name}" />
+            <img src="{Item.url}" alt="{`tile-${row}-${col}`}" />
+            {#if Item.rover}
+              <Rover title="{Item.rover.name}" />
             {/if}
           </div>
         </div>

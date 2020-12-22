@@ -5,9 +5,9 @@ const COMMAND_PHASES = [
     text: 'Enter one of: plateau:, {rover} land:, {rover} instruct:',
   },
   {
-    qualifier: 'PLATEAU:',
+    qualifier: 'plateau:',
     regexTest: /^\d+(?:\s+\d+)$/,
-    text: 'Enter the size of the PLATEAU as: X Y ',
+    text: 'Enter the size of the plateau as: X Y ',
     commitFn: ([x, y]) => {
       console.log(x, y);
       gridDimensions.update(() => ({
@@ -17,11 +17,10 @@ const COMMAND_PHASES = [
     },
   },
   {
-    qualifier: 'LAND:',
+    qualifier: 'land:',
     regexTest: /^\w+(?:\s+\d+){2}$/,
     text: 'Where the rover will land as: X Y Direction',
     commitFn: ([name, x, y]) => {
-      console.log(111, name, x, y);
       // update global rovers object with an object holding the rovers position
       rovers.update((r) => [
         ...r,

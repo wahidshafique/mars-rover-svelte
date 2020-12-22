@@ -1,5 +1,6 @@
 <script>
   import COMMAND_PHASES from '../logic/commandPhases';
+  // user inputted
   let commands = '';
   let currentPhase = COMMAND_PHASES[0];
 
@@ -8,11 +9,12 @@
   };
 
   const handleInput = (e) => {
-    const [matchedPhase] = findMatchedPhase(commands.toUpperCase());
+    const [matchedPhase] = findMatchedPhase(commands.toLowerCase());
     if (matchedPhase) {
       // set current phase
       currentPhase = matchedPhase;
     } else {
+      // reset it to the default phase
       currentPhase = COMMAND_PHASES[0];
     }
   };
@@ -20,13 +22,13 @@
   const handleSubmit = (e) => {
     // if we have a matching qualifier, set our command phase to that (we only care about the last one)
     // only full matches are considered
-    const upperCaseCommads = commands.toUpperCase();
+    const upperCaseCommads = commands.toLowerCase();
     const [matchedPhase] = findMatchedPhase(upperCaseCommads);
     if (matchedPhase) {
       const coords = upperCaseCommads
         .replace(matchedPhase.qualifier, '')
         .trim();
-      console.log(111, coords);
+      console.log('matched coords', coords);
       if (coords.match(matchedPhase.regexTest)) {
         matchedPhase.commitFn(coords.split(/[ ,]+/));
       }

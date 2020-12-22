@@ -7,7 +7,6 @@ const genGrid = (gridx, gridy, rovers) => {
     for (let x = 0; x < gridx; x++) {
       tmpGrid[y][x] = { url: Tiles.center };
       if (rovers.length > 0) {
-        console.log('rovers', rovers);
         const roverAtPosition = rovers.find((r) => r.x === x && r.y === y);
         if (roverAtPosition) {
           tmpGrid[y][x].rover = { ...roverAtPosition };
@@ -15,7 +14,6 @@ const genGrid = (gridx, gridy, rovers) => {
       }
     }
   }
-  console.log(111, tmpGrid);
   return tmpGrid;
 };
 
