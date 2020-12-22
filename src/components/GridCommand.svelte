@@ -1,5 +1,12 @@
 <script>
   import COMMAND_PHASES from '../logic/commandPhases';
+  import { onMount } from 'svelte';
+  let errorMsg = '';
+  let inputRef;
+
+  onMount(() => {
+    inputRef.focus();
+  });
   // user inputted
   let commands = '';
   let currentPhase = COMMAND_PHASES[0];
@@ -20,6 +27,7 @@
   };
 
   const handleSubmit = (e) => {
+    errorMsg = '';
     // if we have a matching qualifier, set our command phase to that (we only care about the last one)
     // only full matches are considered
     const upperCaseCommads = commands.toLowerCase();
@@ -30,12 +38,23 @@
         .trim();
       console.log('matched coords', coords);
       if (coords.match(matchedPhase.regexTest)) {
-        matchedPhase.commitFn(coords.split(/[ ,]+/));
+        try {
+          matchedPhase.commitFn(coords.split(/[ ,]+/));
+          // on successful match, reset state
+          commands = '';
+          currentPhase = COMMAND_PHASES[0];
+        } catch (e) {
+          // something internal to the function went wrong
+          console.error(e);
+          errorMsg = e;
+        }
+      } else {
+        // set error message
+        errorMsg = matchedPhase.errorMsg;
       }
+    } else {
+      errorMsg = 'Invalid input';
     }
-    // reset state once done
-    commands = '';
-    currentPhase = COMMAND_PHASES[0];
   };
 </script>
 
@@ -50,11 +69,13 @@
         <div class="flex flex-row">
           <p class="font-bold pr-2">&gt;</p>
           <input
+            bind:this="{inputRef}"
             on:input="{handleInput}"
             bind:value="{commands}"
             class="flex font-bold bg-gray-800 text-white w-full"
           />
         </div>
+        <p class="text-red-500 h-4 ml-4 mt-1">{errorMsg}</p>
       </div>
     </div>
     <button

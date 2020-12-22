@@ -4,7 +4,7 @@
 
   import genGrid from '../logic/genGrid';
 
-  $: grid = genGrid($gridDimensions.x, $gridDimensions.y, $rovers);
+  $: grid = genGrid($gridDimensions.width, $gridDimensions.height, $rovers);
 </script>
 
 <div class="p-4 grid-wrapper">
@@ -15,7 +15,10 @@
           <div class="relative">
             <img src="{Item.url}" alt="{`tile-${row}-${col}`}" />
             {#if Item.rover}
-              <Rover title="{Item.rover.name}" />
+              <Rover
+                title="{Item.rover.name}"
+                orientation="{Item.rover.orientation}"
+              />
             {/if}
           </div>
         </div>

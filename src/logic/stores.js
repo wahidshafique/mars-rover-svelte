@@ -2,7 +2,15 @@ import { writable } from 'svelte/store';
 
 export const grid = writable([[], []]);
 export const gridDimensions = writable({
-  x: 16,
-  y: 9,
+  width: 16,
+  height: 9,
 });
-export const rovers = writable([]);
+// TODO: remove after
+export const rovers = writable([
+  {
+    name: 'bob',
+    x: 1,
+    y: 1,
+    orientation: 0,
+  },
+]);
