@@ -1,7 +1,7 @@
-import { gridDimensions, rovers, grid } from '../logic/stores';
+import { gridDimensions, rovers, grid } from './stores';
 import { get } from 'svelte/store';
-import { rotateRover } from './controlRover';
-import getRoverOrientation from './getRoverOrientation';
+import { rotateRover, moveRoverOneStep } from './controlRover';
+import { getRoverOrientation, getRoverDirection } from './roverDetails';
 
 const COMMAND_PHASES = [
   {
@@ -43,8 +43,6 @@ const COMMAND_PHASES = [
     regexTest: /^\w+\s+[lrm]+$/,
     text: 'Where to move the rover, one of only: l r m',
     commitFn: ([name, commandSequence]) => {
-      console.log('name', name);
-      console.log('command', commandSequence);
       //split commands into array
       const commandsArray = commandSequence.split('');
       // find the name in our rover data struct and update it
@@ -56,20 +54,21 @@ const COMMAND_PHASES = [
             foundRover = true;
             //   bingo, we found a match, and the command will propagate to all rovers of same name
             commandsArray.reduce((acc, currCommand) => {
-              const currentOrientation = getRoverOrientation(acc.dir);
               if (currCommand === 'l' || currCommand === 'r') {
-                acc.orientation = rotateRover(currCommand, currentOrientation);
+                acc.orientation = rotateRover(currCommand, acc.orientation);
               } else if (currCommand === 'm') {
                 const { width, height } = get(gridDimensions);
-                debugger;
                 const { newX, newY } = moveRoverOneStep(
-                  currentOrientation,
+                  getRoverDirection(acc.orientation),
                   width,
-                  height
+                  height,
+                  acc.x,
+                  acc.y
                 );
                 acc.x = newX;
                 acc.y = newY;
               }
+              return acc;
             }, tmpRover);
           }
           return tmpRover;

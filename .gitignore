@@ -1,6 +1,7 @@
 .cache
 node_modules
 dist
+.notes
 # General
 .DS_Store
 .AppleDouble

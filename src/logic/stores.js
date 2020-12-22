@@ -9,8 +9,8 @@ export const gridDimensions = writable({
 export const rovers = writable([
   {
     name: 'bob',
-    x: 1,
-    y: 1,
+    x: 4,
+    y: 4,
     orientation: 0,
   },
 ]);
