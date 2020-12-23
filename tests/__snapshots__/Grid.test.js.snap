@@ -17,7 +17,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-0"
-              src="mapTile_c.png"
+              src="mapTile_tl.png"
             />
              
           </div>
@@ -30,7 +30,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-1-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -43,7 +43,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-2-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -56,7 +56,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-3-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -69,7 +69,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-4-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -82,7 +82,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-5-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -95,7 +95,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-6-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -108,7 +108,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-7-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -121,7 +121,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-8-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -134,7 +134,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-9-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -147,7 +147,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-10-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -160,7 +160,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-11-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -173,7 +173,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-12-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -186,7 +186,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-13-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -199,7 +199,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-14-0"
-              src="mapTile_c.png"
+              src="mapTile_tc.png"
             />
              
           </div>
@@ -212,7 +212,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-0"
-              src="mapTile_c.png"
+              src="mapTile_tr.png"
             />
              
           </div>
@@ -230,7 +230,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-1"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -425,7 +425,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-1"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -443,7 +443,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-2"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -638,7 +638,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-2"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -656,7 +656,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-3"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -851,7 +851,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-3"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -869,7 +869,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-4"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -1064,7 +1064,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-4"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -1082,7 +1082,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-5"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -1277,7 +1277,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-5"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -1295,7 +1295,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-6"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -1490,7 +1490,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-6"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -1508,7 +1508,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-7"
-              src="mapTile_c.png"
+              src="mapTile_l.png"
             />
              
           </div>
@@ -1703,7 +1703,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-7"
-              src="mapTile_c.png"
+              src="mapTile_r.png"
             />
              
           </div>
@@ -1721,7 +1721,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-0-8"
-              src="mapTile_c.png"
+              src="mapTile_bl.png"
             />
              
           </div>
@@ -1734,7 +1734,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-1-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1747,7 +1747,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-2-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1760,7 +1760,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-3-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1773,7 +1773,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-4-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1786,7 +1786,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-5-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1799,7 +1799,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-6-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1812,7 +1812,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-7-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1825,7 +1825,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-8-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1838,7 +1838,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-9-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1851,7 +1851,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-10-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1864,7 +1864,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-11-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1877,7 +1877,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-12-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1890,7 +1890,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-13-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1903,7 +1903,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-14-8"
-              src="mapTile_c.png"
+              src="mapTile_bc.png"
             />
              
           </div>
@@ -1916,7 +1916,7 @@ exports[`Grid must match snapshot 1`] = `
           >
             <img
               alt="tile-15-8"
-              src="mapTile_c.png"
+              src="mapTile_br.png"
             />
              
           </div>
