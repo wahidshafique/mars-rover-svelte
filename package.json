@@ -9,10 +9,10 @@
     "start": "parcel src/index.html --port 3000",
     "test": "jest",
     "lint": "eslint --cache --ext .js src/",
-    "build": "rm -rf dist && parcel build src/index.html"
+    "build": "rm -rf dist && parcel build src/index.html --no-minify"
   },
   "browserslist": [
-    "last 1 chrome versions"
+    "last 2 chrome versions"
   ],
   "resolutions": {
     "terser": "5.2.0"
