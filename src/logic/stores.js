@@ -6,11 +6,4 @@ export const gridDimensions = writable({
   height: 9,
 });
 // TODO: remove after
-export const rovers = writable([
-  {
-    name: 'bob',
-    x: 3,
-    y: 3,
-    orientation: 90,
-  },
-]);
+export const rovers = writable([]);

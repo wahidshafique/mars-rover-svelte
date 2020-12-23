@@ -698,17 +698,6 @@ exports[`Grid must match snapshot 1`] = `
               src="mapTile_c.png"
             />
              
-            <div
-              class="absolute top-0"
-            >
-              <img
-                alt="rover"
-                class="ml-3 mt-3"
-                src="rover.png"
-                style="transform: rotate(90deg)"
-                title="bob-3-3-w"
-              />
-            </div>
           </div>
         </div>
         <div
