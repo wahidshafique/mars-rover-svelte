@@ -6,7 +6,7 @@ dist
 .DS_Store
 .AppleDouble
 .LSOverride
-
+.parcel-cache/
 # Icon must end with two \r
 Icon
 
