@@ -1,6 +1,12 @@
+import type { Rover } from './types';
 import Tiles from '../assets';
 
-const tileDecider = (x, y, gridWidth, gridHeight) => {
+const tileDecider = (
+  x: number,
+  y: number,
+  gridWidth: number,
+  gridHeight: number
+) => {
   let tile = Tiles.center;
 
   if (x === gridWidth - 1 && y === 0) {
@@ -23,7 +29,11 @@ const tileDecider = (x, y, gridWidth, gridHeight) => {
   return { url: tile };
 };
 
-const genGrid = (gridWidth, gridHeight, rovers) => {
+const genGrid = (
+  gridWidth: number,
+  gridHeight: number,
+  rovers: Array<Rover>
+) => {
   let tmpGrid = [];
   for (let y = 0; y < gridHeight; y++) {
     tmpGrid[y] = [];

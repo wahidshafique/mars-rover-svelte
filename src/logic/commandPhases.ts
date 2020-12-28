@@ -1,9 +1,18 @@
-import { gridDimensions, rovers, grid } from './stores';
+import { gridDimensions, rovers } from './stores';
 import { get } from 'svelte/store';
 import { rotateRover, moveRoverOneStep } from './controlRover';
-import { getRoverOrientation, getRoverDirection } from './roverDetails';
+import { getRoverAngle, getRoverDirection } from './roverDetails';
+import type { Rover } from './types';
 
-const COMMAND_PHASES = [
+export interface CommandPhase {
+  text: string;
+  qualifier?: string;
+  regexTest?: RegExp;
+  commitFn?: (inputItems: Array<string>) => void;
+  errorMsg?: string;
+}
+
+const COMMAND_PHASES: Array<CommandPhase> = [
   {
     text: 'Enter one of: plateau:, {rover} land:, {rover} instruct:',
   },
@@ -26,17 +35,20 @@ const COMMAND_PHASES = [
     text: 'Where the rover will land as: X Y Direction(nesw)',
     commitFn: ([name, x, y, dir]) => {
       const { width, height } = get(gridDimensions);
-      if (x > width - 1 || x < 0 || y < 0 || y > height - 1) {
+      const intX = parseInt(x, 10);
+      const intY = parseInt(y, 10);
+      if (intX > width - 1 || intX < 0 || intY < 0 || intY > height - 1) {
         throw new Error(`Please enter values below: ${width} ${height} `);
       }
       // update global rovers object with an object holding the rovers position
-      rovers.update((r) => [
+      rovers.update((r: Array<Rover>) => [
         ...r,
         {
+          bad: 'bag',
           name,
-          x: parseInt(x, 10),
-          y: parseInt(y, 10),
-          orientation: getRoverOrientation(dir),
+          x: intX,
+          y: intY,
+          orientation: getRoverAngle(dir),
         },
       ]);
     },

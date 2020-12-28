@@ -1,23 +1,23 @@
-<script>
-  import COMMAND_PHASES from '../logic/commandPhases';
+<script lang="ts">
+  import COMMAND_PHASES, { CommandPhase } from '../logic/commandPhases';
   import { onMount } from 'svelte';
-  let errorMsg = '';
-  let inputRef;
+  let errorMsg: string = '';
+  let inputRef: HTMLInputElement;
 
   onMount(() => {
     inputRef.focus();
   });
   // user inputted
-  let commands = '';
-  let currentPhase = COMMAND_PHASES[0];
+  let commands: string = '';
+  let currentPhase: CommandPhase = COMMAND_PHASES[0];
 
-  const findMatchedPhase = (coms) => {
+  const findMatchedPhase = (coms: string) => {
     return (
       COMMAND_PHASES.filter((e) => coms && coms.includes(e.qualifier)) || []
     );
   };
 
-  const handleInput = (e) => {
+  const handleInput = () => {
     const [matchedPhase] = findMatchedPhase(commands.toLowerCase());
     if (matchedPhase) {
       // set current phase
@@ -28,14 +28,14 @@
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     errorMsg = '';
     // if we have a matching qualifier, set our command phase to that (we only care about the last one)
     // only full matches are considered
-    const upperCaseCommads = commands.toLowerCase();
-    const [matchedPhase] = findMatchedPhase(upperCaseCommads);
+    const upperCaseCommands = commands.toLowerCase();
+    const [matchedPhase] = findMatchedPhase(upperCaseCommands);
     if (matchedPhase) {
-      const coords = upperCaseCommads
+      const coords = upperCaseCommands
         .replace(matchedPhase.qualifier, '')
         .trim();
       if (coords.match(matchedPhase.regexTest)) {

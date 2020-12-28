@@ -1,3 +1,9 @@
+<style global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+</style>
+
 <script>
   import Grid from './components/Grid.svelte';
   import GridCommand from './components/GridCommand.svelte';

@@ -1,13 +1,12 @@
 <script>
   import Rover from './Rover.svelte';
   import { gridDimensions, rovers } from '../logic/stores';
-
   import genGrid from '../logic/genGrid';
 
   $: grid = genGrid($gridDimensions.width, $gridDimensions.height, $rovers);
 </script>
 
-<div class="p-4 grid-wrapper">
+<div class="p-4 w-max">
   {#each grid as _, col}
     <div class="clear-both">
       {#each grid[col] as Item, row}
@@ -17,7 +16,7 @@
             {#if Item.rover}
               <Rover
                 title="{Item.rover.name}"
-                orientation="{Item.rover.orientation}"
+                angle="{Item.rover.orientation}"
                 row="{row}"
                 col="{col}"
               />

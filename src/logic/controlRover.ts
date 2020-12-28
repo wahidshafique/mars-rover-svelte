@@ -1,4 +1,6 @@
-export const rotateRover = (command, currentOrientation) => {
+import { RoverDirection } from './types';
+
+export const rotateRover = (command: 'l' | 'r', currentOrientation: number) => {
   if (command === 'l') {
     if (currentOrientation <= -90) {
       return 180;
@@ -13,11 +15,11 @@ export const rotateRover = (command, currentOrientation) => {
 };
 
 export const moveRoverOneStep = (
-  currentDir,
-  gridWidth,
-  gridHeight,
-  roverX,
-  roverY
+  currentDir: number,
+  gridWidth: number,
+  gridHeight: number,
+  roverX: number,
+  roverY: number
 ) => {
   const directionMap = {
     n: { newX: roverX, newY: roverY - 1 },
