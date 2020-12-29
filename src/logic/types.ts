@@ -1,11 +1,21 @@
 export interface Rover {
   x: number;
   y: number;
+  name: string;
+  angle: number;
 }
 
 export interface GridDims {
   width: number;
   height: number;
+}
+
+export interface CommandPhase {
+  text: string;
+  qualifier?: string;
+  regexTest?: RegExp;
+  commitFn?: (inputItems: Array<string>) => void;
+  errorMsg?: string;
 }
 
 export enum RoverOrientationsMap {

@@ -1,4 +1,4 @@
-import bottomCenter from './mapTile_bc.png';
+import bottomCenter from 'mapTile_bc.png';
 import bottomLeft from './mapTile_bl.png';
 import bottomRight from './mapTile_br.png';
 import center from './mapTile_c.png';

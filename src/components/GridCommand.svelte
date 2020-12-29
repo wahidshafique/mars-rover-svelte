@@ -1,5 +1,6 @@
 <script lang="ts">
-  import COMMAND_PHASES, { CommandPhase } from '../logic/commandPhases';
+  import COMMAND_PHASES from '../logic/commandPhases';
+  import type { CommandPhase } from '../logic/types';
   import { onMount } from 'svelte';
   let errorMsg: string = '';
   let inputRef: HTMLInputElement;

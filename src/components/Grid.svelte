@@ -16,7 +16,7 @@
             {#if Item.rover}
               <Rover
                 title="{Item.rover.name}"
-                angle="{Item.rover.orientation}"
+                angle="{Item.rover.angle}"
                 row="{row}"
                 col="{col}"
               />

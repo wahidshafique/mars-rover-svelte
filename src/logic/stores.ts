@@ -5,5 +5,5 @@ export const gridDimensions = writable<GridDims>({
   width: 16,
   height: 9,
 });
-// TODO: remove after
+
 export const rovers = writable<Array<Rover>>([]);

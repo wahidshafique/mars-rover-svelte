@@ -3,7 +3,7 @@
 
 module.exports = {
   // An array of file extensions your modules use
-  moduleFileExtensions: ['js', 'svelte', 'json'],
+  moduleFileExtensions: ['js', 'svelte', 'json', 'ts'],
   verbose: true,
 
   // The root directory that Jest should scan for tests and modules within
@@ -27,12 +27,19 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
+    '^.+\\.svelte$': [
+      'svelte-jester',
+      {
+        preprocess: true,
+      },
+    ],
     '^.+\\.js$': 'babel-jest',
-    '^.+\\.svelte$': ['svelte-jest', { preprocess: true }],
+    '^.+\\.ts$': 'ts-jest',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/assetsTransformer.js',
     '\\.(css|less)$': '<rootDir>/assetsTransformer.js',
   },
+  preset: 'ts-jest',
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['node_modules'],

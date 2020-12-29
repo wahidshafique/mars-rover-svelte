@@ -2,15 +2,7 @@ import { gridDimensions, rovers } from './stores';
 import { get } from 'svelte/store';
 import { rotateRover, moveRoverOneStep } from './controlRover';
 import { getRoverAngle, getRoverDirection } from './roverDetails';
-import type { Rover } from './types';
-
-export interface CommandPhase {
-  text: string;
-  qualifier?: string;
-  regexTest?: RegExp;
-  commitFn?: (inputItems: Array<string>) => void;
-  errorMsg?: string;
-}
+import type { Rover, CommandPhase, RoverDirection } from './types';
 
 const COMMAND_PHASES: Array<CommandPhase> = [
   {
@@ -22,8 +14,8 @@ const COMMAND_PHASES: Array<CommandPhase> = [
     text: 'Enter the size of the plateau as: X Y ',
     commitFn: ([x, y]) => {
       gridDimensions.update(() => ({
-        width: x,
-        height: y,
+        width: parseInt(x, 10),
+        height: parseInt(y, 10),
       }));
     },
     errorMsg: 'Invalid, try something like: plateau: 7 7',
@@ -41,16 +33,17 @@ const COMMAND_PHASES: Array<CommandPhase> = [
         throw new Error(`Please enter values below: ${width} ${height} `);
       }
       // update global rovers object with an object holding the rovers position
-      rovers.update((r: Array<Rover>) => [
-        ...r,
-        {
-          bad: 'bag',
-          name,
-          x: intX,
-          y: intY,
-          orientation: getRoverAngle(dir),
-        },
-      ]);
+      rovers.update(
+        (r): Array<Rover> => [
+          ...r,
+          {
+            name,
+            x: intX,
+            y: intY,
+            angle: getRoverAngle(dir as RoverDirection),
+          },
+        ]
+      );
     },
     errorMsg: 'Invalid, try something like: bobTheRover land: 2 2 n',
   },
@@ -71,11 +64,11 @@ const COMMAND_PHASES: Array<CommandPhase> = [
             //   bingo, we found a match, and the command will propagate to all rovers of same name
             commandsArray.reduce((acc, currCommand) => {
               if (currCommand === 'l' || currCommand === 'r') {
-                acc.orientation = rotateRover(currCommand, acc.orientation);
+                acc.angle = rotateRover(currCommand, acc.angle);
               } else if (currCommand === 'm') {
                 const { width, height } = get(gridDimensions);
                 const { newX, newY } = moveRoverOneStep(
-                  getRoverDirection(acc.orientation),
+                  getRoverDirection(acc.angle),
                   width,
                   height,
                   acc.x,

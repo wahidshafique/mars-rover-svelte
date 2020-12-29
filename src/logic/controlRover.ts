@@ -1,21 +1,21 @@
 import { RoverDirection } from './types';
 
-export const rotateRover = (command: 'l' | 'r', currentOrientation: number) => {
+export const rotateRover = (command: 'l' | 'r', currentAngle: number) => {
   if (command === 'l') {
-    if (currentOrientation <= -90) {
+    if (currentAngle <= -90) {
       return 180;
     }
-    return currentOrientation - 90;
+    return currentAngle - 90;
   } else if (command === 'r') {
-    if (currentOrientation > 90) {
+    if (currentAngle > 90) {
       return -90;
     }
-    return currentOrientation + 90;
+    return currentAngle + 90;
   }
 };
 
 export const moveRoverOneStep = (
-  currentDir: number,
+  currentDir: string,
   gridWidth: number,
   gridHeight: number,
   roverX: number,
@@ -27,7 +27,7 @@ export const moveRoverOneStep = (
     s: { newX: roverX, newY: roverY + 1 },
     w: { newX: roverX - 1, newY: roverY },
   };
-  // based on our orientation, move the rover accordingly
+  // based on our angle, move the rover accordingly
   const { newX, newY } = directionMap[currentDir];
 
   if (newX > gridWidth - 1 || newX < 0 || newY > gridHeight - 1 || newY < 0) {
