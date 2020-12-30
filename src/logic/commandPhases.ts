@@ -34,6 +34,9 @@ const COMMAND_PHASES: Array<CommandPhase> = [
       if (intX > width - 1 || intX < 0 || intY < 0 || intY > height - 1) {
         throw new Error(`Please enter values below: ${width} ${height} `);
       }
+      const randomHexColor = `#${Math.floor(Math.random() * 16777215).toString(
+        16
+      )}`;
       // update global rovers object with an object holding the rovers position
       rovers.update(
         (r): Array<Rover> => [
@@ -43,6 +46,7 @@ const COMMAND_PHASES: Array<CommandPhase> = [
             x: intX,
             y: intY,
             angle: getRoverAngle(dir as RoverDirection),
+            color: randomHexColor,
           },
         ]
       );

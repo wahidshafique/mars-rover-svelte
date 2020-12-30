@@ -17,6 +17,7 @@
               <Rover
                 title="{Item.rover.name}"
                 angle="{Item.rover.angle}"
+                color="{Item.rover.color}"
                 row="{row}"
                 col="{col}"
               />

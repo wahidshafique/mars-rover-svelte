@@ -3,6 +3,7 @@ export interface Rover {
   y: number;
   name: string;
   angle: number;
+  color: string;
 }
 
 export interface GridDims {
