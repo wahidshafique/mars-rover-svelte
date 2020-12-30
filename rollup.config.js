@@ -44,6 +44,7 @@ export default {
     name: 'app',
     file: 'public/build/bundle.js',
   },
+  include: ['src', 'src/declaration.d.ts'],
   plugins: [
     svelte({
       preprocess: autoPreprocess({ postcss: true }),

@@ -55,38 +55,40 @@ const COMMAND_PHASES: Array<CommandPhase> = [
       //split commands into array
       const commandsArray = commandSequence.split('');
       // find the name in our rover data struct and update it
-      rovers.update((allRovers) => {
-        let foundRover = false;
-        const newRovers = allRovers.map((rover) => {
-          const tmpRover = { ...rover };
-          if (tmpRover.name === name) {
-            foundRover = true;
-            //   bingo, we found a match, and the command will propagate to all rovers of same name
-            commandsArray.reduce((acc, currCommand) => {
-              if (currCommand === 'l' || currCommand === 'r') {
-                acc.angle = rotateRover(currCommand, acc.angle);
-              } else if (currCommand === 'm') {
-                const { width, height } = get(gridDimensions);
-                const { newX, newY } = moveRoverOneStep(
-                  getRoverDirection(acc.angle),
-                  width,
-                  height,
-                  acc.x,
-                  acc.y
-                );
-                acc.x = newX;
-                acc.y = newY;
-              }
-              return acc;
-            }, tmpRover);
+      rovers.update(
+        (allRovers): Array<Rover> => {
+          let foundRover = false;
+          const newRovers = allRovers.map((rover) => {
+            const tmpRover = { ...rover };
+            if (tmpRover.name === name) {
+              foundRover = true;
+              //   bingo, we found a match, and the command will propagate to all rovers of same name
+              commandsArray.reduce((acc, currCommand) => {
+                if (currCommand === 'l' || currCommand === 'r') {
+                  acc.angle = rotateRover(currCommand, acc.angle);
+                } else if (currCommand === 'm') {
+                  const { width, height } = get(gridDimensions);
+                  const { newX, newY } = moveRoverOneStep(
+                    getRoverDirection(acc.angle),
+                    width,
+                    height,
+                    acc.x,
+                    acc.y
+                  );
+                  acc.x = newX;
+                  acc.y = newY;
+                }
+                return acc;
+              }, tmpRover);
+            }
+            return tmpRover;
+          });
+          if (!foundRover) {
+            throw new Error(`No rover by the name of "${name}"`);
           }
-          return tmpRover;
-        });
-        if (!foundRover) {
-          throw new Error(`No rover by the name of "${name}"`);
+          return newRovers;
         }
-        return newRovers;
-      });
+      );
     },
     errorMsg: 'Invalid, try something like: instruct: mrml',
   },
