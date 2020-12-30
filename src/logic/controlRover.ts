@@ -1,4 +1,4 @@
-import { RoverDirection } from './types';
+import type { RoverDirection } from './types';
 
 export const rotateRover = (command: 'l' | 'r', currentAngle: number) => {
   if (command === 'l') {
@@ -15,7 +15,7 @@ export const rotateRover = (command: 'l' | 'r', currentAngle: number) => {
 };
 
 export const moveRoverOneStep = (
-  currentDir: string,
+  currentDir: string | RoverDirection,
   gridWidth: number,
   gridHeight: number,
   roverX: number,
@@ -28,7 +28,9 @@ export const moveRoverOneStep = (
     w: { newX: roverX - 1, newY: roverY },
   };
   // based on our angle, move the rover accordingly
-  const { newX, newY } = directionMap[currentDir];
+  const { newX, newY }: { newX: number; newY: number } = directionMap[
+    currentDir
+  ];
 
   if (newX > gridWidth - 1 || newX < 0 || newY > gridHeight - 1 || newY < 0) {
     console.log('cannot move any more in this direction ', roverX, roverY);

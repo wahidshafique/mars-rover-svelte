@@ -2,7 +2,7 @@ import { gridDimensions, rovers } from './stores';
 import { get } from 'svelte/store';
 import { rotateRover, moveRoverOneStep } from './controlRover';
 import { getRoverAngle, getRoverDirection } from './roverDetails';
-import type { Rover, CommandPhase, RoverDirection } from './types';
+import type { Rover, CommandPhase, RoverDirection, GridDims } from './types';
 
 const COMMAND_PHASES: Array<CommandPhase> = [
   {
@@ -13,10 +13,12 @@ const COMMAND_PHASES: Array<CommandPhase> = [
     regexTest: /^\d+(?:\s+\d+)$/,
     text: 'Enter the size of the plateau as: X Y ',
     commitFn: ([x, y]) => {
-      gridDimensions.update(() => ({
-        width: parseInt(x, 10),
-        height: parseInt(y, 10),
-      }));
+      gridDimensions.update(
+        (): GridDims => ({
+          width: parseInt(x, 10),
+          height: parseInt(y, 10),
+        })
+      );
     },
     errorMsg: 'Invalid, try something like: plateau: 7 7',
   },
